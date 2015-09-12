@@ -4,6 +4,8 @@
 <h2>{{ title }} has the highest Popularity on</h2>
 
 {% for k,v in myans.items  %}
-<div><a href="{{ k }}">{{ k }} <h4>{{ v }}</h4></a> </div>
+<div>
+<a href={{ k }}>{{ k }} </a> &nbsp {{ v }}
+</div>
 {% endfor %}
 {% endblock %}
