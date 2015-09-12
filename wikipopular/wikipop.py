@@ -44,7 +44,7 @@ def wikipop(title):
 		print newresult
 		return newresult
 	except Exception,e:
-		newresult = "Not A valid title"
+		newresult = {"Not A valid title": "error404"}
 		return newresult
 	# 	for link1 in pg1.links:
 	# 		if link1 == pg.title:
