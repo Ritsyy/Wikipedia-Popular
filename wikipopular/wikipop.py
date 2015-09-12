@@ -21,18 +21,24 @@ def wikipop(title):
 		# print arr
 		for link in pg.links:
 			try:
+				pg1 = wikipedia.WikipediaPage(link)
 				i=0
-				link1={""}
-				pg1 = wikipedia.page(link)
-				page = urllib2.urlopen(pg1.url)
-				soup = BeautifulSoup(page.read())
-				link1 = soup.findAll('a', title=stitle)
-				if len(link1)==None:
-					print "0 links"
-				else:
-				# 	i=len(link1)
-					result[pg1.url] = len(link1)
-					print pg1, "is redirected", len(link1), "no. of times"
+				if pg1:
+					for link2 in pg1.links:
+						if link2 == pg.title:	
+							# pg1 = wikipedia.page(link2)
+							page = urllib2.urlopen(pg1.url)
+							soup = BeautifulSoup(page.read())
+							link1 = soup.findAll('a', title=stitle)
+							if len(link1)==None:
+								print "0 links"
+							else:
+							# 	i=len(link1)
+								result[pg1] = len(link1)
+								print pg1, "is redirected", len(link1), "no. of times"
+						else:
+							# print "not found anything on this title"
+							continue
 
 			except Exception,e:
 				print "not found"
